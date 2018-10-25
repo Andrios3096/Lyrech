@@ -1,0 +1,29 @@
+
+
+<div class="row mt-5">
+    <h1>lala</h1>
+  <!--Little Profile widget-->
+<div *ngFor="let user of usuarios" class="col-lg-4 col-xlg-4">
+    <div class="card">
+        <div class="card-body little-profile text-center">
+            <div class="pro-img m-t-20"><img src="../assets/images/users/4.jpg" alt="user"></div>
+            <h3 class="m-b-0">{{user.nombre}}</h3>
+            <h6 class="text-muted">{{user.email}}</h6>
+            
+        </div>
+        <div class="text-center bg-light">
+            <div class="row">
+                <div class="col-lg-6 col-md-6  p-20 b-r">
+                    <h4 class="m-b-0 font-medium">1</h4><small>{{user.id}}</small></div>
+                <div class="col-lg-6 col-md-6  p-20">
+                    <h4 class="m-b-0 font-medium">2</h4><small>Inversiones Pagadas </small></div>
+            </div>
+        </div>
+        <div class="card-body text-center">
+            <button class="m-t-10 m-b-20 waves-effect waves-dark btn btn-success btn-md btn-rounded">Follow me</button>
+        </div>
+    </div>
+</div>
+
+</div>
+
