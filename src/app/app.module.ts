@@ -13,6 +13,7 @@ import { InformationComponent } from './pages/panel/information/information.comp
 import { RegisterComponent } from './register/register.component';
 import { PagesComponent } from './pages/pages.component';
 import { PerfilesComponent } from './perfiles/perfiles.component';
+import { RegisterEmpresaComponent } from './register-empresa/register-empresa.component';
 
 //servicio
 import { AuthService } from './services/auth.service';
@@ -31,9 +32,11 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
-import { RegisterEmpresaComponent } from './register-empresa/register-empresa.component';
+
 
 import { LoginGuardGuard } from './services/guards/login-guard.guard';
+import { NuevaInversionComponent } from './pages/panel/nueva-inversion/nueva-inversion.component';
+
 
 
 
@@ -51,7 +54,8 @@ import { LoginGuardGuard } from './services/guards/login-guard.guard';
     RegisterComponent,
     PagesComponent,
     PerfilesComponent,
-    RegisterEmpresaComponent
+    RegisterEmpresaComponent,
+    NuevaInversionComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

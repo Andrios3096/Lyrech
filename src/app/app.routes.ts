@@ -11,6 +11,10 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { GraficasComponent } from './pages/graficas/graficas.component';
 import { PanelComponent } from './pages/panel/panel.component';
 import { PerfilesComponent } from './perfiles/perfiles.component';
+import { InformationComponent } from './pages/panel/information/information.component';
+import { NuevaInversionComponent } from './pages/panel/nueva-inversion/nueva-inversion.component';
+
+
 
 import { LoginGuardGuard } from './services/guards/login-guard.guard';
 import { AdminGuardGuard } from './services/guards/admin-guard.guard';
@@ -26,7 +30,10 @@ const routes: Routes = [
         { path: 'inicio', component: DashboardComponent, },
         { path: 'panel', component: PanelComponent, },
         { path: 'graficas', component: GraficasComponent, },
+        { path: 'informacion', component: InformationComponent, },
+        { path: 'nuevainversion', component: NuevaInversionComponent, },
         { path: '', pathMatch: 'full', redirectTo:'/inicio' },
+
     
     ]},
     

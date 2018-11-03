@@ -7,7 +7,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable, of} from 'rxjs';
 
 
-import { map, switchMap, } from 'rxjs/operators'
+import { map, switchMap} from 'rxjs/operators'
 
 
 
