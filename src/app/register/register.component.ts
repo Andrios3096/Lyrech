@@ -13,13 +13,15 @@ export class RegisterComponent implements OnInit {
 
   forma:FormGroup;
 
-  perro =[]
-
  usuario = {
    nombre: '',
    email: '',
-   identidad :''
+   identidad :'',
+   telefono:'',
+   roles:''
  }
+
+ usuarioUid;
 
   constructor(public _AuthService:AuthService) { }
 
@@ -45,14 +47,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
 
     //datos de la base de tos traer
-    this._AuthService.obtenerUser().subscribe(data =>{
-      console.log(data)
-    });
+    // this._AuthService.obtenerUser().subscribe(data =>{
+    //   console.log(data)
+    // });
       
     this.forma = new FormGroup({
       nombre: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required,Validators.email]),
       identidad: new FormControl(null, Validators.required),
+      telefono: new FormControl(null, Validators.required),
       pass1: new FormControl(null, Validators.required),
       pass2: new FormControl(null, Validators.required)
     }, {validators: this.sonIguales('pass1','pass2')})
@@ -80,12 +83,21 @@ export class RegisterComponent implements OnInit {
 
   guardarDatos(){
 
-    this.usuario.nombre =this.forma.value.nombre,
-    this.usuario.email = this.forma.value.email,
-    this.usuario.identidad = this.forma.value.identidad
- 
-    this._AuthService.agregardata(this.usuario)
-    
+    this._AuthService.getAuth().subscribe(auth =>{
+
+      if(auth){
+       
+        this.usuarioUid = auth.uid;
+        this.usuario.nombre =this.forma.value.nombre,
+        this.usuario.email = this.forma.value.email,
+        this.usuario.identidad = this.forma.value.identidad,
+        this.usuario.telefono = this.forma.value.telefono,
+        this.usuario.roles = 'usuario'
+
+        this._AuthService.agregardata(this.usuario, this.usuarioUid)
+
+      }
+    })
   }
 
   funciondeagregar(){

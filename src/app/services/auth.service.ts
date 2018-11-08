@@ -19,6 +19,8 @@ import { map, switchMap} from 'rxjs/operators'
 export class AuthService {
 
   userCollection: AngularFirestoreCollection<any>;
+  inverCollection: AngularFirestoreCollection<any>;
+  inversiones: Observable<any[]>;
   users: Observable<any[]>;
   userDoc : AngularFirestoreDocument<any>
 
@@ -44,7 +46,7 @@ export class AuthService {
 
 // this.users = _AngularFirestore.collection('usuarios').valueChanges();
 
-this.userCollection=this._AngularFirestore.collection('usuarios');
+
 
 
   }
@@ -52,7 +54,7 @@ this.userCollection=this._AngularFirestore.collection('usuarios');
 
 //traer la data de la base de datos :v
 obtenerUser(){
-    
+  this.userCollection=this._AngularFirestore.collection('usuarios');
   return this.users = this.userCollection.snapshotChanges().pipe(
     map(actions =>
        actions.map(a=>{
@@ -62,18 +64,30 @@ obtenerUser(){
         return data
         
       })
-    )
-  )
-
+    ))
 }
 ///////////////
+
+obtenerInversiones(){
+
+  this.inverCollection=this._AngularFirestore.collection('Inversiones');
+  return this.inversiones = this.inverCollection.snapshotChanges().pipe(
+    map(actions =>
+       actions.map(a=>{
+        const data = a.payload.doc.data() ;
+        data.id = a.payload.doc.id;
+       //  console.log(data);
+        return data
+        
+      })
+    ))
+}
 
       ////////////////////////PARA OBTENER EL ID DEL COMPONENTE PARA EL GUARD
       obtenerId(id){
 
         this.idGuard= id
-        console.log(this.idGuard)
-        
+        // console.log(this.idGuard)
       }
       ////////////////////////
 
@@ -109,15 +123,31 @@ obtenerUser(){
   }
   ///////////////
 
-  agregardata(usuario){
+  agregardata(usuario,uid){
     // console.log('nuevo usuario');
-    this.userCollection.add(usuario)
+    this.userCollection.doc(uid).set(usuario)
     console.log(usuario)
   }
 
 
-  updatedata(){
-    console.log('actualizado usuario');
+  agregarInversion(inversion){
+    this.inverCollection=this._AngularFirestore.collection('Inversiones');
+    this.inverCollection.add(inversion)
+  }
+
+  obtenerInformacion(idx){
+
+    this.userCollection=this._AngularFirestore.collection('Inversiones', ref => ref.where('id', '==' , `${idx}`));
+  
+    return this.users = this.userCollection.snapshotChanges().pipe(
+      map(actions =>
+         actions.map(a=>{
+          const data = a.payload.doc.data() ;
+          data.id = a.payload.doc.id;
+         //console.log(data);
+          return data
+        })
+      ))
   }
 
 

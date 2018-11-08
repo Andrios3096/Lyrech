@@ -37,6 +37,9 @@ import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { LoginGuardGuard } from './services/guards/login-guard.guard';
 import { NuevaInversionComponent } from './pages/panel/nueva-inversion/nueva-inversion.component';
 
+// graficos
+import { ChartsModule } from 'ng2-charts';
+
 
 
 
@@ -65,6 +68,7 @@ import { NuevaInversionComponent } from './pages/panel/nueva-inversion/nueva-inv
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    ChartsModule
     
   ],
   providers: [AuthService,LoginGuardGuard],

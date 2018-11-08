@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -9,40 +12,35 @@ import { AuthService } from '../../services/auth.service';
 })
 export class PanelComponent implements OnInit {
 
+  inversiones=[]
   usuarios=[]
   emailUsuario;
   lol;
 
-  constructor(public _AuthService:AuthService) {
+  constructor(public _AuthService:AuthService,
+              public _Router:Router) {
   
   }
 
   ngOnInit() {
 
-    
 ////para obtener los usuarios
-    this._AuthService.obtenerUser().subscribe(data =>{
-      this.usuarios = data;
+    this._AuthService.obtenerInversiones().subscribe(data =>{
+      this.inversiones = data;
       console.log(data)
-      
+
       this.identificarId()
 
       });
-      
-
-
-          
-
-
-    
 
 }
 
 identificarId(){
 
   this._AuthService.getAuth().subscribe(auth =>{
+
     if(auth){
-     
+
       this.emailUsuario = auth.email;
 
       for (let iterator of this.usuarios) {
@@ -50,12 +48,14 @@ identificarId(){
           // console.log(iterator.id)
           this.lol = iterator.id
         }
-        }
-    } 
- 
+      }
+    }
     this._AuthService.obtenerId(this.lol)
   })
+  }
 
+  verInformacion(idx){
+    this._Router.navigate(['/informacion', idx])
   }
 
 }

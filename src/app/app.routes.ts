@@ -13,6 +13,8 @@ import { PanelComponent } from './pages/panel/panel.component';
 import { PerfilesComponent } from './perfiles/perfiles.component';
 import { InformationComponent } from './pages/panel/information/information.component';
 import { NuevaInversionComponent } from './pages/panel/nueva-inversion/nueva-inversion.component';
+import { RegisterEmpresaComponent } from './register-empresa/register-empresa.component';
+
 
 
 
@@ -30,7 +32,7 @@ const routes: Routes = [
         { path: 'inicio', component: DashboardComponent, },
         { path: 'panel', component: PanelComponent, },
         { path: 'graficas', component: GraficasComponent, },
-        { path: 'informacion', component: InformationComponent, },
+        { path: 'informacion/:id', component: InformationComponent, },
         { path: 'nuevainversion', component: NuevaInversionComponent, },
         { path: '', pathMatch: 'full', redirectTo:'/inicio' },
 
@@ -38,8 +40,11 @@ const routes: Routes = [
     ]},
     
     { path: 'login', component: LoginComponent },
-    { path: 'registro', component: RegisterComponent },
-    { path: 'perfiles', component: PerfilesComponent, canActivate: [AdminGuardGuard] },
+    { path: 'registroUsuario', component: RegisterComponent },
+    { path: 'registroEmpresa', component: RegisterEmpresaComponent },
+    { path: 'perfiles', component: PerfilesComponent, 
+    // canActivate: [AdminGuardGuard]
+},
     { path: '**',  component: NopagefoundComponent },
 ];
 

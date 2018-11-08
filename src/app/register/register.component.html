@@ -3,7 +3,7 @@
         <div class="login-box card">
             <div class="card-body">
                 <form ngNativeValidate [formGroup]="forma" (ngSubmit)="funciondeagregar()" class="form-horizontal form-material" id="loginform" action="index.html">
-                    <h3 class="box-title m-b-20">Registro</h3>
+                    <h3 class="box-title m-b-20">Registro Usuario</h3>
                     <div class="form-group">
 
                         <div class="col-xs-12">
@@ -12,11 +12,20 @@
                             formControlName="nombre">
                         </div>
                     </div>
+
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <input class="form-control" type="email" required placeholder="Email"
                             name="email"
                             formControlName="email">
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="email" required placeholder="Telefono"
+                            name="telefono"
+                            formControlName="telefono">
                         </div>
                     </div>
 
@@ -30,7 +39,7 @@
                                 <option value="2">Pasaporte</option>
                                 
                             </select>
-                        </div>
+                    </div>
 
                     <div class="form-group ">
                         <div class="col-xs-12">
