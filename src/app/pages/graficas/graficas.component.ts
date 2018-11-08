@@ -19,14 +19,19 @@ export class GraficasComponent implements OnInit {
  
 
   constructor(public _AuthService:AuthService) {
-    
+
 
 }
 
 ngOnInit() {
 
   ////para obtener las inversiones
-    let a =  this._AuthService.obtenerInversiones().subscribe(data =>{
+    this._AuthService.obtenerInversiones().subscribe(data =>{
+
+      this.fecha = []
+      this.meses = []
+      this.repetidos = []
+      
         this.inversiones = data;
         console.log(this.inversiones)
 
@@ -101,7 +106,7 @@ for (const inversion of this.inversiones) {
 
   console.log("lolol",this.repetidos);
   
-  a.unsubscribe();
+
 
   });
 
@@ -109,6 +114,7 @@ for (const inversion of this.inversiones) {
 
   ///// grafica //////
   public lineChartData:Array<any> = [
+    
     {data: this.repetidos, label: 'Inversiones 2018'},
 
   ];
@@ -134,6 +140,13 @@ for (const inversion of this.inversiones) {
   public chartHovered(e:any):void {
     console.log(e);
   }
+
+  public acaray(){
+    this.fecha = []
+    this.meses = []
+    this.repetidos = []
+  }
+
 
 
 }
