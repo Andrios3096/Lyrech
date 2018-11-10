@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { PagesComponent } from './pages/pages.component';
 
-
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
@@ -14,9 +13,6 @@ import { PerfilesComponent } from './perfiles/perfiles.component';
 import { InformationComponent } from './pages/panel/information/information.component';
 import { NuevaInversionComponent } from './pages/panel/nueva-inversion/nueva-inversion.component';
 import { RegisterEmpresaComponent } from './register-empresa/register-empresa.component';
-
-
-
 
 import { LoginGuardGuard } from './services/guards/login-guard.guard';
 import { AdminGuardGuard } from './services/guards/admin-guard.guard';
@@ -36,7 +32,6 @@ const routes: Routes = [
         { path: 'nuevainversion', component: NuevaInversionComponent, },
         { path: '', pathMatch: 'full', redirectTo:'/inicio' },
 
-    
     ]},
     
     { path: 'login', component: LoginComponent },

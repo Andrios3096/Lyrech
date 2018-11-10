@@ -32,6 +32,7 @@ export class AuthService {
 
   constructor(public _AngularFireAuth:AngularFireAuth, public _AngularFirestore:AngularFirestore) {
 
+//======================================================================================================================================//
      //////////////////// admin guard aqui se guia del documento///////
      /// Get auth data, then get firestore user document || null
      this.user$ = this._AngularFireAuth.authState.pipe(
@@ -42,55 +43,70 @@ export class AuthService {
           return of(null)
         }
       }))
-     //////////////
-
-// this.users = _AngularFirestore.collection('usuarios').valueChanges();
-
-
-
-
   }
+//======================================================================================================================================//
 
-
+//======================================================================================================================================//
 //traer la data de la base de datos :v
-obtenerUser(){
-  this.userCollection=this._AngularFirestore.collection('usuarios');
+  obtenerUser() {
+
+    this.userCollection = this._AngularFirestore.collection('usuarios');
+    return this.users = this.userCollection.snapshotChanges().pipe(
+      map(actions =>
+        actions.map(a => {
+          const data = a.payload.doc.data();
+          data.id = a.payload.doc.id;
+          //  console.log(data);
+          return data
+        })
+      ))
+  }
+//======================================================================================================================================//
+
+//======================================================================================================================================//
+  obtenerInversiones() {
+
+    this.inverCollection = this._AngularFirestore.collection('Inversiones');
+    return this.inversiones = this.inverCollection.snapshotChanges().pipe(
+      map(actions =>
+        actions.map(a => {
+          const data = a.payload.doc.data();
+          data.id = a.payload.doc.id;
+          //  console.log(data);
+          return data
+
+        })
+      ))
+  }
+//======================================================================================================================================//
+
+//======================================================================================================================================//
+obtenerInformacion(idx){
+
+  this.userCollection=this._AngularFirestore.collection('Inversiones', ref => ref.where('id', '==' , `${idx}`));
+
   return this.users = this.userCollection.snapshotChanges().pipe(
     map(actions =>
        actions.map(a=>{
         const data = a.payload.doc.data() ;
         data.id = a.payload.doc.id;
-       //  console.log(data);
+       //console.log(data);
         return data
-        
       })
     ))
 }
-///////////////
+//======================================================================================================================================//
 
-obtenerInversiones(){
-
-  this.inverCollection=this._AngularFirestore.collection('Inversiones');
-  return this.inversiones = this.inverCollection.snapshotChanges().pipe(
-    map(actions =>
-       actions.map(a=>{
-        const data = a.payload.doc.data() ;
-        data.id = a.payload.doc.id;
-       //  console.log(data);
-        return data
-        
-      })
-    ))
-}
-
-      ////////////////////////PARA OBTENER EL ID DEL COMPONENTE PARA EL GUARD
+//======================================================================================================================================//
+//PARA OBTENER EL ID DEL COMPONENTE PARA EL GUARD
       obtenerId(id){
 
         this.idGuard= id
         // console.log(this.idGuard)
       }
-      ////////////////////////
+//======================================================================================================================================//
 
+//======================================================================================================================================//
   // registrar correo para logeo
   registerUser(email: string, pass:string){
     return new Promise((resolve,reject)=>{
@@ -99,8 +115,9 @@ obtenerInversiones(){
       err => reject (err));
     })
   }
-  ///////////////////////////////////////
+//======================================================================================================================================//
 
+//======================================================================================================================================//
   // logeo usuario
   loginEmail(email: string, pass:string){
     return new Promise((resolve,reject)=>{
@@ -109,48 +126,36 @@ obtenerInversiones(){
       err => reject (err));
     })
   }
-  /////////////////////////////////////
+//======================================================================================================================================//
 
+//======================================================================================================================================//
   // ver si esta autenticado o no y la info del authxd
   getAuth(){
     return this._AngularFireAuth.authState.pipe(map(auth=>auth))
   }
-  ///////////////////
+//======================================================================================================================================//
 
+//======================================================================================================================================//
   // salir xd
   logout(){
     return this._AngularFireAuth.auth.signOut();
   }
-  ///////////////
+//======================================================================================================================================//
 
+//======================================================================================================================================//
   agregardata(usuario,uid){
     // console.log('nuevo usuario');
     this.userCollection.doc(uid).set(usuario)
     console.log(usuario)
   }
+//======================================================================================================================================//
 
-
+//======================================================================================================================================//
   agregarInversion(inversion){
     this.inverCollection=this._AngularFirestore.collection('Inversiones');
     this.inverCollection.add(inversion)
   }
-
-  obtenerInformacion(idx){
-
-    this.userCollection=this._AngularFirestore.collection('Inversiones', ref => ref.where('id', '==' , `${idx}`));
-  
-    return this.users = this.userCollection.snapshotChanges().pipe(
-      map(actions =>
-         actions.map(a=>{
-          const data = a.payload.doc.data() ;
-          data.id = a.payload.doc.id;
-         //console.log(data);
-          return data
-        })
-      ))
-  }
-
-
+//======================================================================================================================================//
 
 
 
