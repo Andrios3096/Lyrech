@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { map} from 'rxjs/operators'
 
 
 
@@ -56,13 +57,13 @@ export class InformationComponent implements OnInit {
       
     })
 
-    this.obtenerfechaapi()
-    this.temporizador()
+
 
   }
 
   ngOnInit() {
-
+    this.obtenerfechaapi()
+    this.temporizador()
   }
 
   // verificarurl(){
@@ -110,32 +111,6 @@ temporizador(){
 
 }, 1000)
 }
-
-
-
-//     //  let secs = this.horas.getSeconds();
-    
-    
-//     // setTimeout(() => {
-//     //   this.obtenersegundos()
-//     //   console.log(this.seconds);
-//     // }, 1000);
-
-
-//     // setInterval(()=> this.obtenersegundos() ,1000)
-    
-
-//     this.fecha = `${dia}-${mes}-${ano}-${hora}-${minuto}-${this.seconds}`
-//     console.log("fecha", this.fecha);
-    
-    
-//     let horapc = new Date()
-//     let diapc = horapc.getDate();
-//     console.log("fecha",dia);
-//     console.log("dia pc",diapc);
-//     let diasquedan = dia-diapc;
-//     console.log("te quedan", diasquedan);
-//   }
 
 
 

@@ -1,21 +1,25 @@
 <section id="wrapper">
-    <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);" >
+    <div class="login-register" >
         <div class="login-box card lel">
             <div class="card-body ">
 
-
+<!-- FORMULARIO -->
                 <form ngNativeValidate #f="ngForm" (ngSubmit)='ingresar(f)'class="form-horizontal form-material" id="loginform" action="index.html">
+
                     <h3 class="box-title m-b-20">Sign In</h3>
+
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <input class="form-control" type="email" required placeholder="email"
                             ngModel name="email"> </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-xs-12">
                             <input class="form-control" type="password" required placeholder="Password"
                             ngModel name="password"> </div>
                     </div>
+
                     <div class="form-group row">
                         <div class="col-md-12">
                             <div class="checkbox checkbox-info pull-left p-t-0">
@@ -23,19 +27,21 @@
                                 <label for="checkbox-signup"> Remember me </label>
                             </div> </div>
                     </div>
+
                     <div class="form-group text-center">
                         <div class="col-xs-12 p-b-20">
                             <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Ingresar</button>
                         </div>
                     </div>
                     
+                </form>
+<!-- FIN DEL FORMULARIO -->
+
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                           No estas registrado? <a routerLink="/registro"  class="text-info m-l-5">Registrate !</a>
+                           No estas registrado? <a routerLink="/perfiles"  class="text-info m-l-5">Registrate !</a>
                         </div>
                     </div>
-                </form>
-
 
             </div>
         </div>

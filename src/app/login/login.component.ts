@@ -23,15 +23,20 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar(f: NgForm){
+
     console.log(f.value);
     console.log(f.valid);
 
     this._AuthService.loginEmail(f.value.email, f.value.password)
     .then ((res) => {
-      this._Router.navigate(['/panel'])
-    }). catch ((err) => { 
+
+      this._Router.navigate(['/inicio'])
+
+    }). catch ((err) => {
+
       console.log(err)
       this._Router.navigate(['/login'])
+      
   })
 
   }

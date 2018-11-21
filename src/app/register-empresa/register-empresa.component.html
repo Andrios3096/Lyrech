@@ -2,6 +2,7 @@
   <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
       <div class="login-box card">
           <div class="card-body">
+              <!-- FOMRULARIO -->
               <form ngNativeValidate [formGroup]="forma" (ngSubmit)="funciondeagregar()" class="form-horizontal form-material" id="loginform" action="index.html">
                   <h3 class="box-title m-b-20">Registro Empresa</h3>
 
@@ -23,7 +24,7 @@
 
                   <div class="form-group">
                       <div class="col-xs-12">
-                          <input class="form-control" type="text" required placeholder="Telefono"
+                          <input class="form-control" type="number" required placeholder="Telefono"
                           name="telefono"
                           formControlName="telefono">
                       </div>
@@ -31,7 +32,7 @@
 
                   <div class="form-group">
                     <div class="col-xs-12">
-                        <input class="form-control" type="text" required placeholder="RUP de Empresa"
+                        <input class="form-control" type="number" required placeholder="RUP de Empresa"
                         name="rup"
                         formControlName="rup">
                     </div>
@@ -72,6 +73,7 @@
                   </div>
 
               </form>
+              <!-- FIN DEL FOMRULARIO -->
           </div>
       </div>
   </div>

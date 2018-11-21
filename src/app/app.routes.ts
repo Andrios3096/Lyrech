@@ -39,7 +39,7 @@ const routes: Routes = [
     { path: 'registroUsuario', component: RegisterComponent },
     { path: 'registroEmpresa', component: RegisterEmpresaComponent },
     { path: 'perfiles', component: PerfilesComponent, 
-    canActivate: [AdminGuardGuard]
+    // canActivate: [AdminGuardGuard]
 },
     { path: '**',  component: NopagefoundComponent },
 ];

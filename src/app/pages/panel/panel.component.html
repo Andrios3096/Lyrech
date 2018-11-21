@@ -4,17 +4,20 @@
 </div>
 <div class="row mt-5">
 
+
   <!--Little Profile widget-->
-<div *ngFor="let inversion of inversiones" class="col-lg-3 col-xlg-3">
+<div *ngFor="let inversion of inversiones, index as i" class="col-lg-3 col-xlg-3">
     <div class="card">
         <div class="card-body little-profile text-center">
             <div class="pro-img m-t-20"><img src="../assets/images/users/4.jpg" alt="user"></div>
             <h3 class="m-b-0">Empresa</h3>
+            
             <h6 class="text-muted">Persona solicitante</h6>
             
         </div>
         <div class="text-center bg-light">
             <div class="row">
+
                 <div class="col-lg-6 col-md-6  p-20 b-r">
                     <h4 class="m-b-0 font-medium">s/ {{inversion.monto}}</h4><small>Monto</small></div>
                 <div class="col-lg-6 col-md-6  p-20">
@@ -23,6 +26,11 @@
                     <h4 class="m-b-0 font-medium">{{inversion.taza}} %</h4><small>TR</small></div>
                 <div class="col-lg-6 col-md-6  p-20">
                     <h4 class="m-b-0 font-medium">{{inversion.cuotas}}</h4><small>Cuotas</small></div>
+
+                <div class="col-lg-6 col-md-6  p-20">
+                    <h4 class="m-b-0 font-medium">{{fechamostrada[i]}}</h4><small>Dias</small></div>
+
+
             </div>
         </div>
         <div class="card-body text-center">
@@ -30,6 +38,8 @@
         </div>
     </div>
 </div>
+
+
 
 </div>
 

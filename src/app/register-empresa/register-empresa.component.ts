@@ -13,9 +13,7 @@ export class RegisterEmpresaComponent implements OnInit {
   
   forma:FormGroup;
 
-
-
- usuario = {
+ empresa= {
    nombre: '',
    email: '',
    identidad :'',
@@ -44,15 +42,11 @@ export class RegisterEmpresaComponent implements OnInit {
       };
     };
   }
-  ////////////
+//======================================================================================================================================//
 
-  //------------------------//
+
   ngOnInit() {
 
-    //datos de la base de tos traer
-    // this._AuthService.obtenerUser().subscribe(data =>{
-    //   console.log(data)
-    // });
       
     this.forma = new FormGroup({
 
@@ -68,8 +62,8 @@ export class RegisterEmpresaComponent implements OnInit {
 
   }
 
-
-  registrarUsuario(){
+//======================================================================================================================================//
+  registrarEmpresa(){
 
     if (this.forma.valid) {
       
@@ -87,6 +81,11 @@ export class RegisterEmpresaComponent implements OnInit {
     }
   }
 
+  //======================================================================================================================================//
+
+
+  //================================================va guardar en la base de datos======================================================================================//
+
   guardarDatos(){
 
     this._AuthService.getAuth().subscribe(auth =>{
@@ -94,22 +93,24 @@ export class RegisterEmpresaComponent implements OnInit {
       if(auth){
        
         this.usuarioUid = auth.uid;
-        this.usuario.nombre =this.forma.value.nombre,
-        this.usuario.email = this.forma.value.email,
-        this.usuario.telefono = this.forma.value.telefono,
-        this.usuario.rup = this.forma.value.rup,
-        this.usuario.roles = 'empresa'
+        this.empresa.nombre =this.forma.value.nombre,
+        this.empresa.email = this.forma.value.email,
+        this.empresa.telefono = this.forma.value.telefono,
+        this.empresa.rup = this.forma.value.rup,
+        this.empresa.roles = 'empresa'
 
-        console.log("empresa",this.usuario);
+        console.log("empresa",this.empresa);
         
-        this._AuthService.agregarusuario(this.usuario, this.usuarioUid)
+        // this._AuthService.agregarusuario(this.empresa, this.usuarioUid)
 
       }
     })
   }
 
+  //======================================================================================================================================//
+
   funciondeagregar(){
-    this.registrarUsuario();
+    // this.registrarEmpresa();
     this.guardarDatos();
   }
 

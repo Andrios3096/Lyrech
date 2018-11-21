@@ -11,7 +11,6 @@ import { Router} from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   isLogin: boolean;
-  nombreUsuario;
   emailUsuario;
   uid;
 
@@ -19,6 +18,7 @@ export class NavbarComponent implements OnInit {
     public _Router:Router) { }
 
   ngOnInit() {
+
     this._AuthService.getAuth().subscribe(auth =>{
       if(auth){
         this.isLogin = true;
@@ -26,12 +26,13 @@ export class NavbarComponent implements OnInit {
         this.emailUsuario = auth.email;
 
         this.uid= auth.uid;
-        // console.log(this.nombreUsuario,this.emailUsuario,this.uid)
+ 
       } else {
         this.isLogin=false
       }
       
     })
+
   }
 
   salir(){

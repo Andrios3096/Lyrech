@@ -19,12 +19,14 @@ File: scss
 Login register and recover password Page
 ******************/
 .login-register {
+  background: url(../../../assets/images/background/login-register.jpg) fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 100%;
-  width: 100%;
-  padding: 10% 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-box {
@@ -49,9 +51,6 @@ Login register and recover password Page
     position: absolute;
     height: 100%; }
 
-@media screen and ( max-width: 1000px) {
-    .login-register{
-      height: 100% !important;
-  }
-}
+
+
     
