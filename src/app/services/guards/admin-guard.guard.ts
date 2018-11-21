@@ -21,12 +21,15 @@ export class AdminGuardGuard implements CanActivate {
 
 
     return this._AuthService.user$
+
     .pipe(take(1))
     .pipe(map(user => user && user.roles=='administrador' ? true : false))
     .pipe(tap(isAdmin => {
+
       if (!isAdmin) {
         
         console.error('acces denied')
+        this._Router.navigate(['/login'])
       }
      
     }))

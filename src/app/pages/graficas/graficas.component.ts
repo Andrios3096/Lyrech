@@ -33,7 +33,9 @@ ngOnInit() {
   ////para obtener las inversiones
     this._AuthService.obtenerInversiones().subscribe(data =>{
 
-
+      this.fecha = []
+      this.meses = []
+      this.repetidos = []
 
         this.inversiones = data;
         console.log(this.inversiones)
@@ -93,9 +95,7 @@ ngOnInit() {
         // arreglo de meses
 arregloMeses(){
 
-  this.fecha = []
-  this.meses = []
-  this.repetidos = []
+
   
   for (const inversion of this.inversiones) {
     let segundos = inversion.fecha.seconds;

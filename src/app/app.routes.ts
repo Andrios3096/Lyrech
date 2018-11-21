@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './pages/pages.component';
 
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
 import { RegisterComponent } from './register/register.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { GraficasComponent } from './pages/graficas/graficas.component';
@@ -25,12 +25,13 @@ const routes: Routes = [
     { path: '', component: PagesComponent, canActivate:[LoginGuardGuard],
 
     children :[
-        { path: 'inicio', component: DashboardComponent, },
-        { path: 'panel', component: PanelComponent, },
+        { path: 'inicio', component: PanelComponent, },
+        
         { path: 'graficas', component: GraficasComponent, },
         { path: 'informacion/:id', component: InformationComponent, },
         { path: 'nuevainversion', component: NuevaInversionComponent, },
         { path: '', pathMatch: 'full', redirectTo:'/inicio' },
+
 
     ]},
     
@@ -38,7 +39,7 @@ const routes: Routes = [
     { path: 'registroUsuario', component: RegisterComponent },
     { path: 'registroEmpresa', component: RegisterEmpresaComponent },
     { path: 'perfiles', component: PerfilesComponent, 
-    // canActivate: [AdminGuardGuard]
+    canActivate: [AdminGuardGuard]
 },
     { path: '**',  component: NopagefoundComponent },
 ];

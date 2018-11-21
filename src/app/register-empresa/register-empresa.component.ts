@@ -100,9 +100,9 @@ export class RegisterEmpresaComponent implements OnInit {
         this.usuario.rup = this.forma.value.rup,
         this.usuario.roles = 'empresa'
 
-        console.log("a caray",this.usuario);
+        console.log("empresa",this.usuario);
         
-        // this._AuthService.agregardata(this.usuario, this.usuarioUid)
+        this._AuthService.agregarusuario(this.usuario, this.usuarioUid)
 
       }
     })

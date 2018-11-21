@@ -23,12 +23,11 @@ export class AuthService {
   inversiones: Observable<any[]>;
   users: Observable<any[]>;
   userDoc : AngularFirestoreDocument<any>
+  inversionDoc: AngularFirestoreDocument<any>
 
   user$: Observable<any>
 
   idGuard;
-
-
 
   constructor(public _AngularFireAuth:AngularFireAuth, public _AngularFirestore:AngularFirestore) {
 
@@ -72,7 +71,7 @@ export class AuthService {
         actions.map(a => {
           const data = a.payload.doc.data();
           data.id = a.payload.doc.id;
-          //  console.log(data);
+          console.log(data);
           return data
 
         })
@@ -99,11 +98,11 @@ obtenerInformacion(idx){
 
 //======================================================================================================================================//
 //PARA OBTENER EL ID DEL COMPONENTE PARA EL GUARD
-      obtenerId(id){
+  obtenerId(id) {
 
-        this.idGuard= id
-        // console.log(this.idGuard)
-      }
+    this.idGuard = id
+    // console.log(this.idGuard)
+  }
 //======================================================================================================================================//
 
 //======================================================================================================================================//
@@ -143,7 +142,7 @@ obtenerInformacion(idx){
 //======================================================================================================================================//
 
 //======================================================================================================================================//
-  agregardata(usuario,uid){
+  agregarusuario(usuario,uid){
     // console.log('nuevo usuario');
     this.userCollection.doc(uid).set(usuario)
     console.log(usuario)
@@ -157,6 +156,13 @@ obtenerInformacion(idx){
   }
 //======================================================================================================================================//
 
+agregaridinversion(idx){
+
+  console.log(idx);
+  
+  this.inversionDoc = this._AngularFirestore.doc(`Inversiones/${idx.id}`);
+  this.inversionDoc.update(idx);
+}
 
 
 }

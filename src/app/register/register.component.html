@@ -1,5 +1,5 @@
 <section id="wrapper">
-    <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg);">
+    <div class="login-register" style="background-image:url(../assets/images/background/login-register.jpg); height: 100vh">
         <div class="login-box card">
             <div class="card-body">
                 <form ngNativeValidate [formGroup]="forma" (ngSubmit)="funciondeagregar()" class="form-horizontal form-material" id="loginform" action="index.html">
@@ -7,7 +7,7 @@
                     <div class="form-group">
 
                         <div class="col-xs-12">
-                            <input class="form-control" type="text" required placeholder="Name"
+                            <input class="form-control" type="text"  placeholder="Name"
                             name="nombre"
                             formControlName="nombre">
                         </div>
@@ -15,7 +15,7 @@
 
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="email" required placeholder="Email"
+                            <input class="form-control" type="email"  placeholder="Email"
                             name="email"
                             formControlName="email">
                         </div>
@@ -23,23 +23,47 @@
 
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="email" required placeholder="Telefono"
+                            <input class="form-control" type="text"  placeholder="Telefono"
                             name="telefono"
                             formControlName="telefono">
                         </div>
                     </div>
 
+                <div formGroupName="documento" >
+
                     <div class="form-group">
+                        
                             <label class="">Tipo de documento de identidad </label>
+
                             <select class="custom-select col-12" id="inlineFormCustomSelect"
-                            name="identidad"
-                            formControlName="identidad" >
+                            name="tipodocumento"
+                            formControlName="tipodocumento">
                                 
-                                <option value="1">DNI</option>
-                                <option value="2">Pasaporte</option>
+                                <!-- <option value="xd" disabled>Tipo documento</option> -->
+                                <option value="DNI" >DNI</option>
+                                <option value="Pasaporte" >Pasaporte</option>
                                 
                             </select>
                     </div>
+                     
+
+                    <div *ngIf="dni" class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="password" required placeholder="Ingrese su DNI"
+                            name="numerodocumento"
+                            formControlName="numerodocumento">
+                        </div>
+                    </div>
+
+                    <div *ngIf="pasaporte" class="form-group ">
+                        <div class="col-xs-12">
+                            <input class="form-control" type="password" required placeholder="Ingrese su pasaporte"
+                            name="numerodocumento"
+                            formControlName="numerodocumento">
+                        </div>
+                    </div>
+
+                </div> 
 
                     <div class="form-group ">
                         <div class="col-xs-12">
@@ -57,7 +81,7 @@
                     </div>
 
                     <div class="form-group" *ngIf="forma.errors?.sonIguales && !forma.pristine">
-                        <p class="text-danger"> las contrase;as deben ser iguales</p>
+                        <p class="text-danger"> las contraseñas deben ser iguales</p>
                     </div>
 
                     <div class="form-group text-center p-b-20">

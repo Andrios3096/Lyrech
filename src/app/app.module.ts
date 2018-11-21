@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
 import { PanelComponent } from './pages/panel/panel.component';
 import { GraficasComponent } from './pages/graficas/graficas.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
@@ -17,6 +17,9 @@ import { RegisterEmpresaComponent } from './register-empresa/register-empresa.co
 
 //servicio
 import { AuthService } from './services/auth.service';
+
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 //fomrularios
@@ -48,7 +51,7 @@ import { ChartsModule } from 'ng2-charts';
     AppComponent,
     LoginComponent,
     NopagefoundComponent,
-    DashboardComponent,
+
     PanelComponent,
     GraficasComponent,
     NavbarComponent,
@@ -68,7 +71,8 @@ import { ChartsModule } from 'ng2-charts';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule
     
   ],
   providers: [AuthService,LoginGuardGuard],

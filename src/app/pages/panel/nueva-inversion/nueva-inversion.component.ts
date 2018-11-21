@@ -40,15 +40,15 @@ export class NuevaInversionComponent implements OnInit {
   
   }
 
-  agregarInversion(){
+  agregarInversion() {
 
-      this.inversion.monto =this.forma.value.monto,
+      this.inversion.monto = this.forma.value.monto,
       this.inversion.plazo = this.forma.value.plazo,
       this.inversion.cuotas = this.forma.value.cuotas,
       this.inversion.taza = this.forma.value.taza,
-      this.inversion.pagare = this.forma.value.Pagaré,
+      this.inversion.pagare = this.forma.value.pagare,
       this.inversion.visita = this.forma.value.visita,
-      this.inversion.aval = this.forma.value.Aval,
+      this.inversion.aval = this.forma.value.aval,
 
       this._AuthService.agregarInversion(this.inversion)
 

@@ -49,7 +49,7 @@ Login register and recover password Page
     position: absolute;
     height: 100%; }
 
-@media screen and ( max-width: 100px) {
+@media screen and ( max-width: 1000px) {
     .login-register{
       height: 100% !important;
   }

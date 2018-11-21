@@ -33,6 +33,14 @@ export class PanelComponent implements OnInit {
 
       });
 
+    this._AuthService.obtenerUser().subscribe(data =>{
+      this.usuarios = data;
+      console.log(data)
+
+      this.identificarId()
+
+      });
+
 }
 
 identificarId(){
@@ -51,12 +59,19 @@ identificarId(){
       }
     }
     this._AuthService.obtenerId(this.lol)
+    console.log("sss",this.lol);
+    
   })
   }
 
   verInformacion(idx){
-    this._Router.navigate(['/informacion', idx])
+    // this._AuthService.agregaridinversion(idx);
+    console.log(idx);
+    this._Router.navigate(['/informacion', idx.id])
   }
+
+
+
 
 }
 
