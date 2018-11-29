@@ -19,7 +19,7 @@ export class RegisterEmpresaComponent implements OnInit {
    identidad :'',
    telefono:'',
    rup:'',
-   roles:''
+   tipo:''
  }
 
  usuarioUid;
@@ -52,7 +52,6 @@ export class RegisterEmpresaComponent implements OnInit {
 
       nombre: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required,Validators.email]),
-      identidad: new FormControl(null, Validators.required),
       telefono: new FormControl(null, Validators.required),
       rup: new FormControl(null, Validators.required),
       pass1: new FormControl(null, Validators.required),
@@ -97,11 +96,11 @@ export class RegisterEmpresaComponent implements OnInit {
         this.empresa.email = this.forma.value.email,
         this.empresa.telefono = this.forma.value.telefono,
         this.empresa.rup = this.forma.value.rup,
-        this.empresa.roles = 'empresa'
+        this.empresa.tipo = 'empresa'
 
         console.log("empresa",this.empresa);
         
-        // this._AuthService.agregarusuario(this.empresa, this.usuarioUid)
+        this._AuthService.agregarempresa(this.empresa, this.usuarioUid)
 
       }
     })
@@ -110,7 +109,7 @@ export class RegisterEmpresaComponent implements OnInit {
   //======================================================================================================================================//
 
   funciondeagregar(){
-    // this.registrarEmpresa();
+    this.registrarEmpresa();
     this.guardarDatos();
   }
 

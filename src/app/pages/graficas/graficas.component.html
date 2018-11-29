@@ -2,15 +2,18 @@
   <h1> Estadisticas <small> Lyrech </small> </h1>
   <hr>
 
-  <div *ngFor="let item of repetidos">
-    <p> {{item}} </p>
-  </div>
 
   <div class="row">
 
     <div class="col-6">
+      <canvas id="canvas1">
+        {{chartpie}}
+      </canvas>
+    </div>
+
+    <div class="col-6">
       <canvas id="canvas">
-        {{chart}}
+        {{chartbar}}
       </canvas>
     </div>
 

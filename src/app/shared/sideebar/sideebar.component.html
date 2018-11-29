@@ -10,25 +10,35 @@
                         <li class="user-profile">
                             <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img src="../assets/images/users/profile.png" alt="user" /><span class="hide-menu">{{emailUsuario}}</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a routerLink="/perfil"> Perfil </a></li>
+                                <li><a routerLink="/perfil" routerLinkActive="active"> Perfil </a></li>
                                 <li><a (click)="salir()"> Salir </a></li>
                             </ul>
                         </li>
                         <li class="nav-devider"></li>
                         <li class="nav-small-cap">PERSONAL</li>
 
-                        <li> <a class=" has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu"> Inversiones </span></a>
+                        <li> <a class=" has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu"> Inicio </span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="javascript:void()">En curso</a></li>
-                                <li><a href="javascript:void()">Pendientes</a></li>
+                                <li><a routerLink="/inicio" routerLinkActive= "active">Panel de Inversiones</a></li>
                             </ul>
                         </li>
-                        <li> <a class="waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu"> Historial </span></a>
+
+                        <li> <a class=" has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu"> Historial </span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a routerLink="/inversiones-proceso" routerLinkActive= "active">En curso</a></li>
+                                <li><a routerLink="/inversiones-finalizadas" routerLinkActive= "active">Finalizadas</a></li>
+                            </ul>
                         </li>
-                        <li> <a class="waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu"> Estadisticas </span></a>
+                       
+                        <li> <a *ngIf="!sidebarestadistica" class=" has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu"> Estadisticas </span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a routerLink="/graficos" routerLinkActive= "active">Panel de Graficos</a></li>
+                            </ul>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu"> Salir </span></a>
+                        
+                        <li> <a (click)="salir()" class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu"> Salir </span></a>
                         </li>
+                
 
                     </ul>
                 </nav>

@@ -39,14 +39,6 @@
                     <!-- User profile and search -->
                     <!-- ============================================================== -->
                     <ul class="navbar-nav my-lg-0">
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
-                            <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search & enter"> <a class="srh-btn"><i class="ti-close"></i></a> </form>
-                        </li>
-
  
                         <!-- ============================================================== -->
                         <!-- Profile -->
@@ -65,7 +57,7 @@
                                     </li>
                                     <li role="separator" class="divider"></li>
                                     <li><a routerLink="/perfil"><i class="ti-user"></i> Perfil</a></li>
-                                    <li><a routerLink="/historial"><i class="ti-wallet"></i> Historial </a></li>
+                                    <li><a routerLink="/inversiones-finalizadas"><i class="ti-wallet"></i> Historial </a></li>
                                     <li role="separator" class="divider"></li>
                                     <li  ><a  *ngIf="isLogin" (click)="salir()" ><i class="fa fa-power-off"></i> Salir </a></li>
                                     

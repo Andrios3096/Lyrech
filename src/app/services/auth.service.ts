@@ -19,9 +19,14 @@ import { map, switchMap} from 'rxjs/operators'
 export class AuthService {
 
   userCollection: AngularFirestoreCollection<any>;
+  empresaCollection: AngularFirestoreCollection<any>;
   inverCollection: AngularFirestoreCollection<any>;
+  newinverCollection: AngularFirestoreCollection<any>;
+
+  itemDoc: AngularFirestoreDocument<any>;
   inversiones: Observable<any[]>;
   users: Observable<any[]>;
+  usersubs: Observable<any[]>;
   userDoc : AngularFirestoreDocument<any>
   inversionDoc: AngularFirestoreDocument<any>
 
@@ -42,6 +47,8 @@ export class AuthService {
           return of(null)
         }
       }))
+
+
   }
 //======================================================================================================================================//
 
@@ -71,7 +78,7 @@ export class AuthService {
         actions.map(a => {
           const data = a.payload.doc.data();
           data.id = a.payload.doc.id;
-          console.log(data);
+          // console.log(data);
           return data
 
         })
@@ -79,10 +86,11 @@ export class AuthService {
   }
 //======================================================================================================================================//
 
-//======================================================================================================================================//
-obtenerInformacion(idx){
 
-  this.userCollection=this._AngularFirestore.collection('Inversiones', ref => ref.where('id', '==' , `${idx}`));
+
+obtenerInversionesproceso(){
+
+  this.userCollection=this._AngularFirestore.collection('Inversiones', ref => ref.where('estado', '==' , 'proceso'));
 
   return this.users = this.userCollection.snapshotChanges().pipe(
     map(actions =>
@@ -93,8 +101,46 @@ obtenerInformacion(idx){
         return data
       })
     ))
-}
+
+    } // fin de obetenerinversionesproceso
+
 //======================================================================================================================================//
+
+
+obtenerInversionesfinalizadas(){
+
+  this.userCollection=this._AngularFirestore.collection('Inversiones', ref => ref.where('estado', '==' , 'finalizada'));
+
+  return this.users = this.userCollection.snapshotChanges().pipe(
+    map(actions =>
+       actions.map(a=>{
+        const data = a.payload.doc.data() ;
+        data.id = a.payload.doc.id;
+       //console.log(data);
+        return data
+      })
+    ))
+
+}// fin de einversionesfinalizadas
+
+
+obtenerusuariossubscritos(){
+
+  this.inverCollection = this._AngularFirestore.collection('UsuariosSubscritos');
+
+  return this.users = this.inverCollection.snapshotChanges().pipe(
+    map((actions) => {
+      return actions.map(a => {
+      const data = a.payload.doc.data();
+      data.id = a.payload.doc.id;
+      
+      // console.log("data",data);
+
+      return data;
+      
+    })}));
+
+}
 
 //======================================================================================================================================//
 //PARA OBTENER EL ID DEL COMPONENTE PARA EL GUARD
@@ -143,9 +189,16 @@ obtenerInformacion(idx){
 
 //======================================================================================================================================//
   agregarusuario(usuario,uid){
-    // console.log('nuevo usuario');
+    // console.log('nuevo usuario');    
+    this.userCollection = this._AngularFirestore.collection('usuarios');
     this.userCollection.doc(uid).set(usuario)
     console.log(usuario)
+  }
+  agregarempresa(empresa,uid){
+    // console.log('nuevo usuario');
+    this.userCollection = this._AngularFirestore.collection('usuarios');
+    this.userCollection.doc(uid).set(empresa)
+    console.log(empresa)
   }
 //======================================================================================================================================//
 
@@ -158,11 +211,40 @@ obtenerInformacion(idx){
 
 agregaridinversion(idx){
 
-  console.log(idx);
+  // console.log(idx);
   
   this.inversionDoc = this._AngularFirestore.doc(`Inversiones/${idx.id}`);
   this.inversionDoc.update(idx);
 }
+
+///////////////////////////
+  // guardardepositoinversion(newinversion,idx){
+  //   this.newinverCollection = this._AngularFirestore.collection(`Inversiones/${idx}/UsuariosSubscritos`)
+  //   this.newinverCollection.add(newinversion)
+  // }// fin de guardardepositoinversion
+
+  guardardepositoinversion(newinversion){
+    this.newinverCollection = this._AngularFirestore.collection('UsuariosSubscritos')
+    this.newinverCollection.add(newinversion)
+  }// fin de guardardepositoinversion
+
+  //======================================================================================================================================//
+obtenerInformacion(idx){
+
+  this.userCollection=this._AngularFirestore.collection('Inversiones', ref => ref.where('id', '==' , `${idx}`));
+
+  return this.users = this.userCollection.snapshotChanges().pipe(
+    map(actions =>
+       actions.map(a=>{
+        const data = a.payload.doc.data() ;
+        data.id = a.payload.doc.id;
+       //console.log(data);
+        return data
+      })
+    ))
+}
+//======================================================================================================================================// 
+
 
 
 }

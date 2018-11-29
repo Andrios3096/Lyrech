@@ -14,11 +14,16 @@ import { RegisterComponent } from './register/register.component';
 import { PagesComponent } from './pages/pages.component';
 import { PerfilesComponent } from './perfiles/perfiles.component';
 import { RegisterEmpresaComponent } from './register-empresa/register-empresa.component';
+import { InversionesProcesoComponent } from './pages/inversiones-proceso/inversiones-proceso.component';
+import { InversionesFinalizadoComponent } from './pages/inversiones-finalizado/inversiones-finalizado.component';
 
 //servicio
 import { AuthService } from './services/auth.service';
 
 import { HttpClientModule } from '@angular/common/http';
+
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -42,6 +47,8 @@ import { NuevaInversionComponent } from './pages/panel/nueva-inversion/nueva-inv
 
 // graficos
 import { ChartsModule } from 'ng2-charts';
+import { RouterModule } from '@angular/router';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 
 
@@ -61,7 +68,10 @@ import { ChartsModule } from 'ng2-charts';
     PagesComponent,
     PerfilesComponent,
     RegisterEmpresaComponent,
-    NuevaInversionComponent
+    NuevaInversionComponent,
+    InversionesProcesoComponent,
+    InversionesFinalizadoComponent,
+    PerfilComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -72,7 +82,9 @@ import { ChartsModule } from 'ng2-charts';
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    NgbModule
     
   ],
   providers: [AuthService,LoginGuardGuard],

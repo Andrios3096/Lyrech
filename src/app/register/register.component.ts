@@ -20,13 +20,12 @@ export class RegisterComponent implements OnInit {
  usuario = {
    nombre: '',
    email: '',
-
    documento : {
     tipodocumento:'',
     numerodocumento:''
    },
    telefono:'',
-   roles:''
+   tipo:''
  }
 
 
@@ -65,8 +64,8 @@ export class RegisterComponent implements OnInit {
       pass2: new FormControl(null, Validators.required),
 
       documento: new FormGroup({
-        tipodocumento: new FormControl(null),
-        numerodocumento: new FormControl(null )
+        tipodocumento: new FormControl(null, Validators.required),
+        numerodocumento: new FormControl(null, Validators.required )
       }),
 
     }, 
@@ -127,12 +126,10 @@ export class RegisterComponent implements OnInit {
         this.usuario.documento = this.forma.value.documento
 
         this.usuario.telefono = this.forma.value.telefono,
-        this.usuario.roles = 'usuario'
-        
+        this.usuario.tipo = 'usuario'
         
         console.log(this.usuario);
         
-
         this._AuthService.agregarusuario(this.usuario, this.usuarioUid)
 
       }

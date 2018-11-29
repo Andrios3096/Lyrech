@@ -4,6 +4,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { AuthService } from '../../../services/auth.service';
 
+import {Router} from '@angular/router';
+
+import * as moment from 'moment';
+
+import * as firebase from 'firebase/';
+
 @Component({
   selector: 'app-nueva-inversion',
   templateUrl: './nueva-inversion.component.html',
@@ -13,17 +19,25 @@ export class NuevaInversionComponent implements OnInit {
 
   forma:FormGroup;
 
-  inversion = {
+  
+
+  inversion: any = {
+    seguro: {
+      pagare: '',
+      aval: '',
+      visita: ''
+    },
+    usuarioUid: '',
     monto: '',
     plazo: '',
     cuotas :'',
     taza :'',
-    pagare:'',
-    visita:'',
-    aval:''
+    fecharegistro: '',
+    estado: '',
   }
 
-  constructor(public _AuthService:AuthService) { }
+  constructor(public _AuthService:AuthService,
+              public _Router:Router) { }
 
   ngOnInit() {
 
@@ -33,24 +47,32 @@ export class NuevaInversionComponent implements OnInit {
       plazo: new FormControl(null, Validators.required),
       cuotas: new FormControl(null, Validators.required),
       taza: new FormControl(null, Validators.required),
-      pagare: new FormControl(null, Validators.required),
-      visita: new FormControl(null, Validators.required),
-      aval: new FormControl(null, Validators.required)
-    })
+
+      seguro: new FormGroup({
+        pagare: new FormControl(null, Validators.required),
+        aval: new FormControl(null, Validators.required),
+        visita: new FormControl(null, Validators.required),
+      }), // fin del formgroup seguro
+    }) // fin del formgroup forma
   
-  }
+  } // fin del ngOnit
 
   agregarInversion() {
 
+    this._AuthService.getAuth().subscribe(auth => {
+
+      this.inversion.usuarioUid = auth.uid;
       this.inversion.monto = this.forma.value.monto,
-      this.inversion.plazo = this.forma.value.plazo,
+      this.inversion.plazo = moment(this.forma.value.plazo).format("X"),
       this.inversion.cuotas = this.forma.value.cuotas,
       this.inversion.taza = this.forma.value.taza,
-      this.inversion.pagare = this.forma.value.pagare,
-      this.inversion.visita = this.forma.value.visita,
-      this.inversion.aval = this.forma.value.aval,
+      this.inversion.seguro = this.forma.value.seguro,
+      this.inversion.fecharegistro = firebase.firestore.FieldValue.serverTimestamp(),
+      this.inversion.estado = 'proceso';
 
       this._AuthService.agregarInversion(this.inversion)
+      this._Router.navigate(['/inicio'])
 
-  }
+    }) //fin del getauth
+  } // fin del agregarInversion
 }

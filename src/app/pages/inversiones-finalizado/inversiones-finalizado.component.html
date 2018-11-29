@@ -1,0 +1,74 @@
+
+<div *ngIf="!mostrarhistorialusuario"  class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title text-center">Historial de Inversiones Finalizadas</h4>
+            <div class="table-responsive">
+
+                <table class="table full-color-table full-purple-table hover-table" >
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Monto</th>
+                            <th>Cuotas</th>
+                            <th>taza</th>
+                            <th>fecha de Publicacion</th>
+                            <th>fecha de cierre de Inversion</th>
+
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let inversion of arrayfinalizado; let i=index">
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td> $ {{inversion.monto}}</td>
+                            <td>{{inversion.cuotas}}</td>
+                            <td>{{inversion.taza}} % </td>
+                            <td>{{inversion.fecharegistro}}</td>
+                            <td>{{inversion.plazo}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
+
+
+<div *ngIf="mostrarhistorialusuario" class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Historial de Inversiones en Finalizadas</h4>
+                <div class="table-responsive">
+    
+                    <table class="table full-color-table full-purple-table hover-table" >
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Monto</th>
+                                <th>Cuotas</th>
+                                <th>taza</th>
+                                <th>fecha de Publicacion</th>
+                                <th>fecha de cierre de Inversion</th>
+    
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let inversion of arraydeinversionesdepositadas; let i=index">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td> $ {{inversion.monto}}</td>
+                                <td>{{inversion.cuotas}}</td>
+                                <td>{{inversion.taza}} % </td>
+                                <td>{{inversion.fecharegistro}}</td>
+                                <td>{{inversion.plazo}}</td>
+                            </tr>
+    
+                        </tbody>
+                    </table>
+    
+                </div>
+            </div>
+        </div>
+    </div>
